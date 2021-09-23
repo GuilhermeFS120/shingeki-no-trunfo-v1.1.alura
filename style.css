@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+    --fonts: "Open Sans", monospace;
+}
+
+* {
+    text-align: center;
+    box-sizing: inherit;
+}
+
+*::before, *::after {
+    box-sizing: inherit;
+}
+  
+body {
+    font-family: var(--fonts);
+    min-height: 854px;
+    background-image: url('https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png');
+    background-color: #000000;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    padding-bottom: 20vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.page-title {
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+h2 {
+    color: white;
+}
+
+#cartaJogador, #cartaMaquina {
+    width: 360px;
+    height: 500px;
+    overflow: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    background-size: 350px 300px;
+    background-repeat: no-repeat;
+    background-position-x: 5px;
+    background-position-y: 10px;
+    border-radius: 33px;
+}
+
+#cartaJogador h3 {
+    text-align: center;
+}
+
+.cartaImagem {
+    border: 1px solid black;
+    height: 100px;
+    margin: 10px;
+}
+
+.cartaImagem img {
+    width: 100%;
+    height: 100%;
+}
+
+.cartaStatus {
+    height: 160px;
+    margin: 2rem;
+    color: white;
+    z-index: 2;
+    text-align: left;
+}
+
+.cartaStatus p {
+    margin: 20px;
+    padding: 0;
+    height: 1.5rem;
+    width: 15rem;
+    text-align: left;
+}
+
+.resultadoFinal {
+    color: white;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 1rem;
+    border: 2px solid black;
+    background-color: black;
+}
+
+.--spacing {
+    margin-left: 2.5rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cartaSubtitle {
+    z-index: 2;
+    position: absolute;
+    top: 16px;
+    left: 37px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+#cartas {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartaStatus input{
+    margin: 0 1rem 0 0;
+    position: relative;
+    left: 10px;
+}
+
+#opcoes {
+    width: 275px;
+}
+
+.opcoes {
+    background-color: white;
+    display: block;
+    margin: 5px 0;
+    padding: 0 16px 0 0;
+    position: relative;
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.opcoes > label {
+    padding: 6px 8px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    color: #3c454c;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: color 2ooms ease-in;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.opcoes > label::before {
+    width: 100%;
+    height: 10px;
+    border-radius: 50%;
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale3d(1, 1, 1);
+    transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    opacity: 0;
+    z-index: -1;
+}
+
+.opcoes.ataque > label::before {
+    background-color: red;
+}
+
+.opcoes.defesa > label::before {
+    background-color: blue;
+}
+
+.opcoes.magia > label::before {
+    background-color: purple;
+}
+
+.opcoes > label::after {
+    width: 27px;
+    height: 27px;
+    content: '';
+    border: 2px solid #d1d7dc;
+    background-color: white;
+    background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+    background-repeat: no-repeat;
+    background-position: 2px 3px;
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+
+.opcoes > input:checked ~ label {
+    color: white;
+}
+
+.opcoes > input:checked ~ label::before {
+    transform: translate(-50%, -50%) scale3d(56, 56, 1);
+    opacity: 1;
+}
+
+.opcoes > input:checked ~ label::after {
+    background-color: #54e0c7;
+    border-color: #54e0c7;
+}
+
+.opcoes > input {
+    width: 27px;
+    height: 27px;
+    order: 1;
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.resultado {
+    border: 2px solid white;
+    margin: 1rem auto;
+    width: 20rem;
+    color: white;
+    padding: 0.5rem 0.5rem;
+}
+
+button {
+    position: relative;
+    background: transparent;
+    width: 10rem;
+    height: 4rem;
+    margin: 1rem auto;
+    line-height: 3rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    transition: 0.5s;
+    border: 1px solid #ec1840;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: #ec1840 url(https://i.postimg.cc/wBXGXbWN/pixel.png);
+    transition-delay: 0.5s;
+    background-size: 10rem;
+    animation: animate 0.5s steps(8) forwards;
+}
+
+button:last-of-type {
+    border: 1px solid #7a18ec;
+}
+
+button:last-of-type:hover {
+    cursor: pointer;
+    background: #7a18ec url(https://i.postimg.cc/FzBWFtKM/pixel2.png);
+}
+
+@keyframes animate {
+    0% {
+        background-position-y: 0;
+    }
+    100% {
+        background-position-y: -480px;
+    }
+}
+
+button:disabled {
+    border: 1px solid grey;
+    background: transparent;
+    transition: 0.5s;
+}
+
+button:disabled:hover {
+    background: grey;
+}
